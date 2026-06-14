@@ -8,6 +8,7 @@ export class Field implements State.Field {
   isMagicRoom: boolean;
   isWonderRoom: boolean;
   isGravity: boolean;
+  isJurassicDust: boolean;
   isAuraBreak?: boolean;
   isFairyAura?: boolean;
   isDarkAura?: boolean;
@@ -25,6 +26,7 @@ export class Field implements State.Field {
     this.isMagicRoom = !!field.isMagicRoom;
     this.isWonderRoom = !!field.isWonderRoom;
     this.isGravity = !!field.isGravity;
+    this.isJurassicDust = !!field.isJurassicDust;
     this.isAuraBreak = field.isAuraBreak || false;
     this.isFairyAura = field.isFairyAura || false;
     this.isDarkAura = field.isDarkAura || false;
@@ -58,6 +60,7 @@ export class Field implements State.Field {
       isMagicRoom: this.isMagicRoom,
       isWonderRoom: this.isWonderRoom,
       isGravity: this.isGravity,
+      isJurassicDust: this.isJurassicDust,
       attackerSide: this.attackerSide,
       defenderSide: this.defenderSide,
       isAuraBreak: this.isAuraBreak,

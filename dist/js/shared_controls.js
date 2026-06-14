@@ -287,7 +287,15 @@ $(".ability").bind("keyup change", function () {
 		boostedStat.val("");
 		boostedStat.hide();
 	}
-
+	
+	if (ability === "Blackout") {
+		$("#magicroom").prop("checked", true);
+	}
+	
+	if (ability === "Jurassic Dust") {
+		$("#jurassicdust").prop("checked", true);
+	}
+	
 	if (ability === "Supreme Overlord") {
 		$(this).closest(".poke-info").find(".alliesFainted").show();
 	} else {
@@ -398,6 +406,9 @@ function autosetWeather(ability, i) {
 		var newWeather = lastAutoWeather[1 - i] !== "" ? lastAutoWeather[1 - i] : "";
 		$("input:radio[name='weather'][value='" + newWeather + "']").prop("checked", true);
 		break;
+	}
+	if (item === "Booster Energy") {
+		$("#sand").prop("checked", true);
 	}
 }
 
@@ -1201,6 +1212,7 @@ function createField() {
 	var isMagicRoom = $("#magicroom").prop("checked");
 	var isWonderRoom = $("#wonderroom").prop("checked");
 	var isGravity = $("#gravity").prop("checked");
+	var isJurassicDust = $("#jurassicdust").prop("checked");
 	var isSR = [$("#srL").prop("checked"), $("#srR").prop("checked")];
 	var weather;
 	var spikes;
@@ -1273,6 +1285,7 @@ function createField() {
 		isMagicRoom: isMagicRoom,
 		isWonderRoom: isWonderRoom,
 		isGravity: isGravity,
+		isJurassicDust: isJurassicDust,
 		attackerSide: createSide(0),
 		defenderSide: createSide(1)
 	});
@@ -1504,6 +1517,7 @@ function clearField() {
 	$("#magicroom").prop("checked", false);
 	$("#wonderroom").prop("checked", false);
 	$("#gravity").prop("checked", false);
+	$("#jurassicdust").prop("checked", false);
 	$("#srL").prop("checked", false);
 	$("#srR").prop("checked", false);
 	$("#spikesL0").prop("checked", true);

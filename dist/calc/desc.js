@@ -425,7 +425,7 @@ function getEndOfTurn(gen, attacker, defender, move, field) {
         if (!defender.hasType('Rock', 'Ground', 'Steel') &&
             !defender.hasAbility('Magic Guard', 'Overcoat', 'Sand Force', 'Sand Rush', 'Sand Veil') &&
             !defender.hasItem('Safety Goggles')) {
-            damage -= Math.floor(defender.maxHP() / (gen.num === 2 ? 8 : 16));
+            damage -= Math.floor(defender.maxHP() / ((gen.num === 2 || field.isJurassicDust) ? 8 : 16));
             texts.push('sandstorm damage');
         }
     }
@@ -886,6 +886,9 @@ function buildDescription(description, attacker, defender) {
     }
     if (description.isWonderRoom) {
         output += ' in Wonder Room';
+    }
+    if (description.isJurassicDust) {
+        output += ' in Jurassic Dust';
     }
     return output;
 }

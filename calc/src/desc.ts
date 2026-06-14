@@ -31,6 +31,7 @@ export interface RawDesc {
   isTabletsOfRuin?: boolean;
   isVesselOfRuin?: boolean;
   isAuroraVeil?: boolean;
+  isJurassicDust?: boolean;
   isFlowerGiftAttacker?: boolean;
   isFlowerGiftDefender?: boolean;
   isPowerTrickAttacker?: boolean;
@@ -610,7 +611,7 @@ function getEndOfTurn(
       !defender.hasAbility('Magic Guard', 'Overcoat', 'Sand Force', 'Sand Rush', 'Sand Veil') &&
       !defender.hasItem('Safety Goggles')
     ) {
-      damage -= Math.floor(defender.maxHP() / (gen.num === 2 ? 8 : 16));
+      damage -= Math.floor(defender.maxHP() / ((gen.num === 2 || field.isJurassicDust) ? 8 : 16));
       texts.push('sandstorm damage');
     }
   } else if (field.hasWeather('Hail', 'Snow')) {
@@ -1099,6 +1100,9 @@ function buildDescription(description: RawDesc, attacker: Pokemon, defender: Pok
   }
   if (description.isWonderRoom) {
     output += ' in Wonder Room';
+  }
+  if (description.isJurassicDust) {
+    output += ' in Jurassic Dust';
   }
   return output;
 }
