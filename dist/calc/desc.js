@@ -84,6 +84,7 @@ function getRecovery(gen, attacker, defender, move, damage, notation) {
         }
         var percentHealed = move.drain[0] / move.drain[1];
         var attackerHasBigRoot = attacker.hasItem('Big Root');
+        var moveIllWind = move.named('Ill Wind');
         var maxDrain = Math.round(defender.curHP() * percentHealed);
         if (attackerHasBigRoot)
             maxDrain = Math.trunc(maxDrain * 5324 / 4096);

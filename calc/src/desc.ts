@@ -154,8 +154,10 @@ export function getRecovery(
     }
     const percentHealed = move.drain[0] / move.drain[1];
     const attackerHasBigRoot = attacker.hasItem('Big Root');
+	const moveIllWind = move.named('Ill Wind');
     let maxDrain = Math.round(defender.curHP() * percentHealed);
     if (attackerHasBigRoot) maxDrain = Math.trunc(maxDrain * 5324 / 4096);
+    //if (moveIllWind) maxDrain = Math.trunc(maxDrain * 5324 / 4096);
     for (let i = 0; i < minD.length; i++) {
       const range = [minD[i], maxD[i]];
       for (const j in recovery) {

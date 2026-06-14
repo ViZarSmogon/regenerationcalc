@@ -4932,7 +4932,117 @@ const ZA_PATCH: {[name: string]: DeepPartial<MoveData>} = {
   },
 };
 
-const SV: {[name: string]: MoveData} = extend(true, {}, SS, SV_PATCH, ZA_PATCH);
+const RE_PATCH: {[name: string]: DeepPartial<MoveData>} = {
+  Brainwave: {
+    bp: 70,
+    type: 'Psychic',
+    category: 'Special',
+    overrideOffensiveStat: 'spd',
+  },
+  'Buzz Off': {
+    bp: 60,
+    type: 'Electric',
+    category: 'Physical',
+    secondaries: true,
+  },
+  'Coral Crash': {
+    bp: 120,
+    type: 'Poison',
+    category: 'Physical',
+    secondaries: true,
+	recoil: [1, 3],
+  },
+  Escort: {
+    bp: 50,
+    type: 'Normal',
+    category: 'Special',
+  },
+  'Family Onslaught': {
+    bp: 40,
+    type: 'Normal',
+    category: 'Physical',
+	multihit: [2, 4],
+  },
+  'Flare Out': {
+    bp: 70,
+    type: 'Fire',
+    category: 'Physical',
+    secondaries: true,
+    makesContact: true,
+  },
+  'Guardian Dive': {
+    bp: 75,
+    type: 'Flying',
+    category: 'Physical',
+    overrideOffensiveStat: 'def',
+  },
+  'Ill Wind': {
+    bp: 100,
+    type: 'Ice',
+    category: 'Special',
+    secondaries: true,
+	drain: [1, 4],
+  },
+  'Pest Spread': {
+    bp: 100,
+    type: 'Poison',
+    category: 'Special',
+  },
+  'Powder Gale': {
+    bp: 75,
+    type: 'Bug',
+    category: 'Special',
+	secondaries: true,
+  },
+  'Power Wash': {
+    bp: 50,
+    type: 'Water',
+    category: 'Special',
+  },
+  'Raging Torrent': {
+    bp: 90,
+    type: 'Water',
+    category: 'Physical',
+	secondaries: true,
+	makesContact: true,
+  },
+  'Slip Away': {
+    bp: 50,
+    type: 'Water',
+    category: 'Physical',
+	secondaries: true,
+	makesContact: true,
+  },
+  'Smoky Torment': {
+    bp: 75,
+    type: 'Dark',
+    category: 'Physical',
+  },
+  Splashback: {
+    bp: 50,
+    type: 'Water',
+    category: 'Physical',
+  },
+  'Taste Test': {
+    bp: 75,
+    type: 'Normal',
+    category: 'Physical',
+	secondaries: true,
+  },
+  'Vengeful Bone': {
+    bp: 80,
+    type: 'Ghost',
+    category: 'Physical',
+  },
+  'Vital Energy': {
+    bp: 150,
+    type: 'Grass',
+    category: 'Special',
+    target: 'allAdjacentFoes',
+  },
+};
+
+const SV: {[name: string]: MoveData} = extend(true, {}, SS, SV_PATCH, ZA_PATCH, RE_PATCH);
 
 export const MOVES = [{}, RBY, GSC, ADV, DPP, BW, XY, SM, SS, SV];
 

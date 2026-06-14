@@ -899,6 +899,7 @@ export function calculateBasePowerSMSSSV(
   case 'Dragon Energy':
   case 'Eruption':
   case 'Water Spout':
+  case 'Vital Energy':
     basePower = Math.max(1, Math.floor((150 * attacker.curHP()) / attacker.maxHP()));
     desc.moveBP = basePower;
     break;
