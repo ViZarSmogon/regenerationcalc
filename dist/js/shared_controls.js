@@ -407,9 +407,6 @@ function autosetWeather(ability, i) {
 		$("input:radio[name='weather'][value='" + newWeather + "']").prop("checked", true);
 		break;
 	}
-	if (item === "Booster Energy") {
-		$("#sand").prop("checked", true);
-	}
 }
 
 $("input[name='terrain']").change(function () {
