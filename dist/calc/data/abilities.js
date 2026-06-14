@@ -375,6 +375,7 @@ var SV = SS.concat([
     'Bull Spirit',
     'Excavate',
     'Galaxy Brain',
+    'Jurassic Dust',
     'Lifeguard',
     'Of A Feather',
     'Patriarch',
