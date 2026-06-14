@@ -63,6 +63,9 @@ function calculateSMSSSV(gen, attacker, defender, move, field) {
         (move.named('Tera Starstorm') && attacker.teraType && attacker.named('Terapagos-Stellar'))) {
         move.category = attacker.stats.atk > attacker.stats.spa ? 'Physical' : 'Special';
     }
+    if (attacker.hasAbility('Bull Spirit') && attacker.abilityOn) {
+        move.category = 'Physical';
+    }
     var result = new result_1.Result(gen, attacker, defender, move, field, 0, desc);
     if (move.category === 'Status' && !move.named('Nature Power')) {
         return result;
@@ -339,7 +342,7 @@ function calculateSMSSSV(gen, attacker, defender, move, field) {
         (move.flags.sound && !move.named('Clangorous Soul') && defender.hasAbility('Soundproof')) ||
         (move.priority > 0 && defender.hasAbility('Queenly Majesty', 'Dazzling', 'Armor Tail')) ||
         (move.hasType('Ground') && defender.hasAbility('Earth Eater')) ||
-        (move.flags.wind && defender.hasAbility('Wind Rider'))) {
+        (move.flags.wind && defender.hasAbility('Wind Rider', 'Vine Yard'))) {
         desc.defenderAbility = defender.ability;
         return result;
     }
@@ -431,7 +434,7 @@ function calculateSMSSSV(gen, attacker, defender, move, field) {
     var stabMod = (0, util_2.getStellarStabMod)(attacker, move, preStellarStabMod);
     var applyBurn = attacker.hasStatus('brn') &&
         move.category === 'Physical' &&
-        !attacker.hasAbility('Guts') &&
+        !attacker.hasAbility('Guts', 'Tropical Current') &&
         !move.named('Facade');
     desc.isBurned = applyBurn;
     var finalMods = calculateFinalModsSMSSSV(gen, attacker, defender, move, field, desc, isCritical, typeEffectiveness);
@@ -1020,7 +1023,8 @@ function calculateAtModsSMSSSV(gen, attacker, defender, move, field, desc) {
     }
     else if ((attacker.hasAbility('Steelworker') && move.hasType('Steel')) ||
         (attacker.hasAbility('Dragon\'s Maw') && move.hasType('Dragon')) ||
-        (attacker.hasAbility('Rocky Payload') && move.hasType('Rock'))) {
+        (attacker.hasAbility('Rocky Payload') && move.hasType('Rock')) ||
+        (attacker.hasAbility('Of A Feather') && move.hasType('Flying'))) {
         atMods.push(6144);
         desc.attackerAbility = attacker.ability;
     }
@@ -1138,6 +1142,9 @@ function calculateDefenseSMSSSV(gen, attacker, defender, move, field, desc, isCr
     if (field.hasWeather('Snow') && defender.hasType('Ice') && hitsPhysical) {
         defense = (0, util_2.pokeRound)((defense * 3) / 2);
         desc.weather = field.weather;
+    }
+    if (attacker.hasAbility('Short Fuse') && (move.recoil || move.hasCrashDamage || move.named('Explosion') || move.named('Self-Destruct'))) {
+        defense = Math.floor(defense * 0.5);
     }
     var dfMods = calculateDfModsSMSSSV(gen, attacker, defender, move, field, desc, isCritical, hitsPhysical);
     return (0, util_2.OF16)(Math.max(1, (0, util_2.pokeRound)((defense * (0, util_2.chainMods)(dfMods, 410, 131072)) / 4096)));

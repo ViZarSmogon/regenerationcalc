@@ -692,7 +692,12 @@ function getEndOfTurn(
       texts.push('toxic damage');
     }
   } else if (defender.hasStatus('brn')) {
-    if (defender.hasAbility('Heatproof')) {
+    if (defender.hasAbility('Tropical Current')) {
+      if (!healBlock) {
+        damage += Math.floor(defender.maxHP() / 8);
+        texts.push('Tropical Current');
+      }
+    } else if (defender.hasAbility('Heatproof')) {
       damage -= Math.floor(defender.maxHP() / (gen.num > 6 ? 32 : 16));
       texts.push('reduced burn damage');
     } else if (!defender.hasAbility('Magic Guard')) {

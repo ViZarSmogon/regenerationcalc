@@ -347,6 +347,8 @@ const SV = SS.concat([
   'Lifeguard',
   'Of A Feather',
   'Patriarch',
+  'Rolling Stone',
+  'Short Fuse',
   'Tropical Current',
   'Vine Yard',
   'Violent Abandon',

@@ -126,6 +126,9 @@ export function calculateSMSSSV(
       (move.named('Tera Starstorm') && attacker.teraType && attacker.named('Terapagos-Stellar'))) {
     move.category = attacker.stats.atk > attacker.stats.spa ? 'Physical' : 'Special';
   }
+  if (attacker.hasAbility('Bull Spirit') && attacker.abilityOn) {
+    move.category = 'Physical';
+  }
 
   const result = new Result(gen, attacker, defender, move, field, 0, desc);
 
@@ -487,7 +490,7 @@ export function calculateSMSSSV(
       (move.flags.sound && !move.named('Clangorous Soul') && defender.hasAbility('Soundproof')) ||
       (move.priority > 0 && defender.hasAbility('Queenly Majesty', 'Dazzling', 'Armor Tail')) ||
       (move.hasType('Ground') && defender.hasAbility('Earth Eater')) ||
-      (move.flags.wind && defender.hasAbility('Wind Rider'))
+      (move.flags.wind && defender.hasAbility('Wind Rider', 'Vine Yard'))
   ) {
     desc.defenderAbility = defender.ability;
     return result;
@@ -633,7 +636,7 @@ export function calculateSMSSSV(
   const applyBurn =
     attacker.hasStatus('brn') &&
     move.category === 'Physical' &&
-    !attacker.hasAbility('Guts') &&
+    !attacker.hasAbility('Guts', 'Tropical Current') &&
     !move.named('Facade');
   desc.isBurned = applyBurn;
   const finalMods = calculateFinalModsSMSSSV(
@@ -1407,7 +1410,8 @@ export function calculateAtModsSMSSSV(
   } else if (
     (attacker.hasAbility('Steelworker') && move.hasType('Steel')) ||
     (attacker.hasAbility('Dragon\'s Maw') && move.hasType('Dragon')) ||
-    (attacker.hasAbility('Rocky Payload') && move.hasType('Rock'))
+    (attacker.hasAbility('Rocky Payload') && move.hasType('Rock')) ||
+    (attacker.hasAbility('Of A Feather') && move.hasType('Flying'))
   ) {
     atMods.push(6144);
     desc.attackerAbility = attacker.ability;
@@ -1553,6 +1557,9 @@ export function calculateDefenseSMSSSV(
   if (field.hasWeather('Snow') && defender.hasType('Ice') && hitsPhysical) {
     defense = pokeRound((defense * 3) / 2);
     desc.weather = field.weather;
+  }
+  if (attacker.hasAbility('Short Fuse') && (move.recoil || move.hasCrashDamage || move.named('Explosion') || move.named('Self-Destruct'))) {
+    defense = Math.floor(defense * 0.5);
   }
 
   const dfMods = calculateDfModsSMSSSV(

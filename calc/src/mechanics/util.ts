@@ -252,9 +252,9 @@ export function checkGalaxyBrain(source: Pokemon, target: Pokemon) {
     let atk = target.stats.atk;
     let spa = target.stats.spa;
     if (spa <= atk) {
-      source.boosts.spd = Math.min(6, source.boosts.spd + 1);
-    } else {
       source.boosts.def = Math.min(6, source.boosts.def + 1);
+    } else {
+      source.boosts.spd = Math.min(6, source.boosts.spd + 1);
     }
   }
 }
