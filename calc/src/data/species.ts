@@ -10081,7 +10081,7 @@ const REG_PATCH: {[name: string]: DeepPartial<SpeciesData>} = {
   Golem: {bs: {hp: 85, at: 130, df: 120, sa: 45, sd: 65, sp: 55}, abilities: {0: 'Rolling Stone'}},
   Magneton: {bs: {hp: 80, at: 55, df: 110, sa: 100, sd: 85, sp: 70}, abilities: {0: 'Drought'}, nfe: false},
   'Farfetch\u2019d': {types: ['Normal', 'Fighting'], bs: {hp: 75, at: 100, df: 80, sa: 60, sd: 75, sp: 90}, abilities: {0: 'Scrappy'}},
-  Dodrio: {types: ['Ground', 'Flying'], bs: {hp: 85, at: 115, df: 60, sa: 55, sd: 55, sp: 115}, abilities: {0: 'Of A Feather'}},
+  Dodrio: {types: ['Ground', 'Fighting'], bs: {hp: 85, at: 115, df: 60, sa: 55, sd: 55, sp: 115}, abilities: {0: 'Of A Feather'}},
   Cloyster: {types: ['Water', 'Steel'], bs: {hp: 80, at: 90, df: 165, sa: 80, sd: 70, sp: 50}, abilities: {0: 'Regenerator'}},
   Onix: {bs: {hp: 75, at: 135, df: 140, sa: 30, sd: 75, sp: 70}, abilities: {0: 'Solid Rock'}},
   Electrode: {bs: {hp: 60, at: 65, df: 70, sa: 80, sd: 80, sp: 140}, abilities: {0: 'Short Fuse'}},
