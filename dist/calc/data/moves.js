@@ -4967,7 +4967,7 @@ var RE_PATCH = {
         bp: 100,
         type: 'Ice',
         category: 'Special',
-        secondaries: true,
+        self: { boosts: { spa: -1 } },
         drain: [1, 4]
     },
     'Pest Spread': {

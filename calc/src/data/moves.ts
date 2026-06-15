@@ -4980,7 +4980,7 @@ const RE_PATCH: {[name: string]: DeepPartial<MoveData>} = {
     bp: 100,
     type: 'Ice',
     category: 'Special',
-    secondaries: true,
+    self: {boosts: {spa: -1}},
 	drain: [1, 4],
   },
   'Pest Spread': {
